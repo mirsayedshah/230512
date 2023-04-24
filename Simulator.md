@@ -1,0 +1,1 @@
+# The proposed simulator aims to calculate the solar system's optimal generation capacity by utilizing a specially designed optimization model architecture. It tracks changes in system output in response to changes in environmental factors and input variable conditions.
