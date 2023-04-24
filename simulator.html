@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+
+<link rel="icon" type="image/png" href="https://mdanish.me/links/danish.png">
+
+<link rel="stylesheet" type="text/css" href="https://mdanish.me/links/stylesheet.css">
+
+
+</head>
+
+
+<style>
+
+
+</style>
+
+
+
+<body>
+
+
+<section>
+<br/>
+
+<p>The proposed simulator aims to calculate the solar system's optimal generation capacity by utilizing a specially designed optimization model architecture. It tracks changes in system output in response to changes in environmental factors and input variable conditions.</p>
+
+<div align="center" style="display:block;text-align: center;">
+<!-- MENU OPTIONS HERE  -->
+<form style="display: inline-block;margin-left: auto; margin-right: auto;">
+
+<table border="0px" class="form">
+
+<br>
+Input Variables 
+</br>
+<!-- 0scaling layer -->
+<tr style="height:3.5em">
+<td> First-hour period (FHP) </td>
+<td style="text-align:right">
+<input type="range" id="FHP" value="11.49279976" min="1" max="22" step="0.21" onchange="updateTextInput1(this.value, 'FHP_text')" />
+<input class="tabla" type="number" id="FHP_text" value="11.49279976" min="1" max="22" step="0.21" onchange="updateTextInput1(this.value, 'FHP')">
+</td>
+</tr>
+
+<!-- 1scaling layer -->
+<tr style="height:3.5em">
+<td> Distance to solar noon (DSN) </td>
+<td style="text-align:right">
+<input type="range" id="DSN" value="0.5028570294" min="0.0504009" max="1.14111" step="0.0109071" onchange="updateTextInput1(this.value, 'DSN_text')" />
+<input class="tabla" type="number" id="DSN_text" value="0.5028570294" min="0.0504009" max="1.14111" step="0.0109071" onchange="updateTextInput1(this.value, 'DSN')">
+</td>
+</tr>
+
+
+
+<!-- 2scaling layer -->
+<tr style="height:3.5em">
+<td> Temperature (TMP) </td>
+<td style="text-align:center">
+<input type="range" id="TMP" value="58.47909927" min="42" max="78" step="0.36" onchange="updateTextInput1(this.value, 'TMP_text')" />
+<input class="tabla" type="number" id="TMP_text" value="58.47909927" min="42" max="78" step="0.36" onchange="updateTextInput1(this.value, 'TMP')">
+</td>
+</tr>
+
+<!-- 3scaling layer -->
+<tr style="height:3.5em">
+<td> Wind direction (WND) </td>
+<td style="text-align:center">
+<input type="range" id="WND" value="24.95890045" min="1" max="36" step="0.35" onchange="updateTextInput1(this.value, 'WND_text')" />
+<input class="tabla" type="number" id="WND_text" value="24.95890045" min="1" max="36" step="0.35" onchange="updateTextInput1(this.value, 'WND')">
+</td>
+</tr>
+
+<!-- 4scaling layer -->
+<tr style="height:3.5em">
+<td> Wind speed (WSP) </td>
+<td style="text-align:center">
+<input type="range" id="WSP" value="10.09780025" min="1.1" max="26.6" step="0.255" onchange="updateTextInput1(this.value, 'WSP_text')" />
+<input class="tabla" type="number" id="WSP_text" value="10.09780025" min="1.1" max="26.6" step="0.255" onchange="updateTextInput1(this.value, 'WSP')">
+</td>
+</tr>
+
+<!-- 5scaling layer -->
+<tr style="height:3.5em">
+<td> Sky cover (SKC) </td>
+<td style="text-align:center">
+<input type="range" id="SKC" value="1.988350034" min="0" max="4" step="0.04" onchange="updateTextInput1(this.value, 'SKC_text')" />
+<input class="tabla" type="number" id="SKC_text" value="1.988350034" min="0" max="4" step="0.04" onchange="updateTextInput1(this.value, 'SKC')">
+</td>
+</tr>
+
+<!-- 6scaling layer -->
+<tr style="height:3.5em">
+<td> Visibility (VSB) </td>
+<td style="text-align:center">
+<input type="range" id="VSB" value="9.55739975" min="0" max="10" step="0.1" onchange="updateTextInput1(this.value, 'VSB_text')" />
+<input class="tabla" type="number" id="VSB_text" value="9.55739975" min="0" max="10" step="0.1" onchange="updateTextInput1(this.value, 'VSB')">
+</td>
+</tr>
+
+<!-- 7scaling layer -->
+<tr style="height:3.5em">
+<td> Humidity (HMD) </td>
+<td style="text-align:center">
+<input type="range" id="HMD" value="73.51229858" min="14" max="100" step="0.86" onchange="updateTextInput1(this.value, 'HMD_text')" />
+<input class="tabla" type="number" id="HMD_text" value="73.51229858" min="14" max="100" step="0.86" onchange="updateTextInput1(this.value, 'HMD')">
+</td>
+</tr>
+
+<!-- 8scaling layer -->
+<tr style="height:3.5em">
+<td> Average wind speed - period (AWS) </td>
+<td style="text-align:center">
+<input type="range" id="AWS" value="10.12919998" min="0" max="40" step="0.4" onchange="updateTextInput1(this.value, 'AWS_text')" />
+<input class="tabla" type="number" id="AWS_text" value="10.12919998" min="0" max="40" step="0.4" onchange="updateTextInput1(this.value, 'AWS')">
+</td>
+</tr>
+
+<!-- 9scaling layer -->
+<tr style="height:3.5em">
+<td> Power generated per - period (PWR)  </td>
+<td style="text-align:center">
+<input type="range" id="APR" value="30.01779938" min="29.48" max="30.53" step="0.0105" onchange="updateTextInput1(this.value, 'APR_text')" />
+<input class="tabla" type="number" id="APR_text" value="30.01779938" min="29.48" max="30.53" step="0.0105" onchange="updateTextInput1(this.value, 'APR')">
+</td>
+</tr>
+</table>
+<br>
+
+<div align="center">
+<table border="0px" class="form">
+<tr style="height:3.5em">
+<td> Output/Production (PWR) </td>
+<td>
+<input style="text-align:right; padding-right:20px;" id="PWR" value="" type="text"  disabled/>
+</div>
+</td>
+</tr>
+</table>
+</br>
+<div align="center">
+<!-- BUTTON HERE -->
+<button class="btn" onclick="neuralNetwork()">Calculate</button>
+</div>
+</form>
+
+
+
+
+<br/>
+
+</form>
+</div>
+
+
+</section>
+
+
+<script>
+function neuralNetwork()
+{
+	var inputs = [];
+	var FHP = document.getElementById("FHP").value; 
+	inputs.push(FHP);
+	var DSN = document.getElementById("DSN").value; 
+	inputs.push(DSN);
+	var TMP = document.getElementById("TMP").value; 
+	inputs.push(TMP);
+	var WND = document.getElementById("WND").value; 
+	inputs.push(WND);
+	var WSP = document.getElementById("WSP").value; 
+	inputs.push(WSP);
+	var SKC = document.getElementById("SKC").value; 
+	inputs.push(SKC);
+	var VSB = document.getElementById("VSB").value; 
+	inputs.push(VSB);
+	var HMD = document.getElementById("HMD").value; 
+	inputs.push(HMD);
+	var AWS = document.getElementById("AWS").value; 
+	inputs.push(AWS);
+	var APR = document.getElementById("APR").value; 
+	inputs.push(APR);
+
+	var outputs = calculate_outputs(inputs); 
+	var PWR = document.getElementById("PWR");
+	PWR.value = outputs[0].toFixed(4);
+	update_LSTM();
+}
+
+function calculate_outputs(inputs)
+{
+	var FHP = +inputs[0];
+	var DSN = +inputs[1];
+	var TMP = +inputs[2];
+	var WND = +inputs[3];
+	var WSP = +inputs[4];
+	var SKC = +inputs[5];
+	var VSB = +inputs[6];
+	var HMD = +inputs[7];
+	var AWS = +inputs[8];
+	var APR = +inputs[9];
+
+	var scaled_FHP = (FHP-11.49279976)/6.871900082;
+	var scaled_DSN = (DSN-0.5028570294)/0.2976570129;
+	var scaled_TMP = (TMP-58.47909927)/6.831540108;
+	var scaled_WND = (WND-24.95890045)/6.907269955;
+	var scaled_WSP = (WSP-10.09780025)/4.839719772;
+	var scaled_SKC = (SKC-1.988350034)/1.411980033;
+	var scaled_VSB = (VSB-9.55739975)/1.384310007;
+	var scaled_HMD = (HMD-73.51229858)/15.08090019;
+	var scaled_AWS = (AWS-10.12919998)/7.262030125;
+	var scaled_APR = (APR-30.01779938)/0.1420429945;
+
+	var perceptron_layer_1_output_0 = Math.tanh( -0.807717 + (scaled_FHP*0.559397) + (scaled_DSN*0.647947) + (scaled_TMP*0.0276576) + (scaled_WND*0.47716) + (scaled_WSP*0.353094) + (scaled_SKC*-0.362904) + (scaled_VSB*-0.211327) + (scaled_HMD*-0.447337) + (scaled_AWS*-0.353499) + (scaled_APR*-0.496944) );
+	var perceptron_layer_1_output_1 = Math.tanh( 2.04105 + (scaled_FHP*-0.822155) + (scaled_DSN*2.43219) + (scaled_TMP*0.0590992) + (scaled_WND*-0.0651514) + (scaled_WSP*0.134489) + (scaled_SKC*0.152256) + (scaled_VSB*-0.0255309) + (scaled_HMD*0.201222) + (scaled_AWS*0.137871) + (scaled_APR*-0.304734) );
+	var perceptron_layer_1_output_2 = Math.tanh( -1.80318 + (scaled_FHP*0.244786) + (scaled_DSN*-1.04416) + (scaled_TMP*-0.00892525) + (scaled_WND*0.390159) + (scaled_WSP*0.323759) + (scaled_SKC*-0.00599757) + (scaled_VSB*0.0121547) + (scaled_HMD*-0.32894) + (scaled_AWS*0.152083) + (scaled_APR*0.00545484) );
+	var perceptron_layer_1_output_3 = Math.tanh( -1.17135 + (scaled_FHP*-0.354197) + (scaled_DSN*-0.656248) + (scaled_TMP*-0.102843) + (scaled_WND*0.0811014) + (scaled_WSP*-0.0938557) + (scaled_SKC*0.156897) + (scaled_VSB*-0.0791749) + (scaled_HMD*-0.300986) + (scaled_AWS*0.155358) + (scaled_APR*0.148069) );
+	var perceptron_layer_1_output_4 = Math.tanh( -1.20332 + (scaled_FHP*-0.23055) + (scaled_DSN*-0.960755) + (scaled_TMP*-0.18786) + (scaled_WND*-0.0522886) + (scaled_WSP*-0.146358) + (scaled_SKC*0.205069) + (scaled_VSB*0.107659) + (scaled_HMD*0.592403) + (scaled_AWS*-0.161954) + (scaled_APR*-0.262045) );
+	var perceptron_layer_1_output_5 = Math.tanh( 0.626849 + (scaled_FHP*0.165954) + (scaled_DSN*1.32087) + (scaled_TMP*0.182393) + (scaled_WND*0.0098501) + (scaled_WSP*0.139196) + (scaled_SKC*-0.198977) + (scaled_VSB*-0.0286878) + (scaled_HMD*-0.305583) + (scaled_AWS*0.0343114) + (scaled_APR*0.264277) );
+	var perceptron_layer_1_output_6 = Math.tanh( -1.18963 + (scaled_FHP*0.450259) + (scaled_DSN*-1.29097) + (scaled_TMP*0.144524) + (scaled_WND*0.134908) + (scaled_WSP*0.0916994) + (scaled_SKC*0.305597) + (scaled_VSB*-0.026318) + (scaled_HMD*-0.0112834) + (scaled_AWS*0.677691) + (scaled_APR*-0.216455) );
+
+	var perceptron_layer_2_output_0 = ( -0.0387 + (perceptron_layer_1_output_0*-0.107249) + (perceptron_layer_1_output_1*-0.791044) + (perceptron_layer_1_output_2*1.09248) + (perceptron_layer_1_output_3*-0.906219) + (perceptron_layer_1_output_4*-1.00434) + (perceptron_layer_1_output_5*-0.969682) + (perceptron_layer_1_output_6*-0.347533) );
+
+	var unscaling_layer_output_0=perceptron_layer_2_output_0*10314.2998+6984.629883;
+
+
+	var PWR = unscaling_layer_output_0;
+	var out = [];
+	out.push(PWR);
+
+	return out;
+}
+
+function updateTextInput1(val, id)
+{
+	document.getElementById(id).value = val;
+}
+
+
+window.onresize = showDiv;
+
+
+</script>
+
+
+</body>
+
+
+</html>
